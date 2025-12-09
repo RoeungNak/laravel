@@ -42,30 +42,30 @@ Route::group(['middleware' => ['auth:sanctum', 'checkUserRole']], function () {
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
-// Route::group(['middleware' => ['auth:sanctum', 'checkAdminRole']], function () {
-Route::resource('categoies', CategoryController::class);
-Route::resource('brands', BrandController::class);
-Route::resource('suppliers', SupplierController::class);
-Route::resource('sizes', SizeController::class);
-Route::resource('products', ProductController::class);
-Route::post('/temp-images', [TempImageController::class, 'store']);
-Route::delete('/temp-images/{id}', [TempImageController::class, 'destroy']);
-Route::post('/save-product-image', [ProductController::class, 'saveProductImage']);
-Route::post('/change-product-default-image', [ProductController::class, 'updateDefaultImage']);
-Route::delete('/product-delete-image/{id}', [ProductController::class, 'destroyImage']);
-Route::get('/orders', [AdminOrderController::class, 'index']);
-Route::get('/orders/{id}', [AdminOrderController::class, 'details']);
-Route::put('/orders/{id}', [AdminOrderController::class, 'update']);
-Route::get('users/{id}', [UserController::class, 'show']);
-Route::put('users/{id}', [UserController::class, 'update']);
-Route::delete('users/{id}', [UserController::class, 'destroy']);
-Route::get('users', [UserController::class, 'index']);
-Route::get('users/counts', [UserController::class, 'counts']);
-// Finance summary
-Route::get('/finance', [FinanceController::class, 'getFinanceSummary']);
-Route::get('/sales-report', [SaleReportController::class, 'index']);
-Route::get('/completed-sales', [AdminOrderController::class, 'completedSales']);
-// });
+Route::group(['middleware' => ['auth:sanctum', 'checkAdminRole']], function () {
+    Route::resource('categoies', CategoryController::class);
+    Route::resource('brands', BrandController::class);
+    Route::resource('suppliers', SupplierController::class);
+    Route::resource('sizes', SizeController::class);
+    Route::resource('products', ProductController::class);
+    Route::post('/temp-images', [TempImageController::class, 'store']);
+    Route::delete('/temp-images/{id}', [TempImageController::class, 'destroy']);
+    Route::post('/save-product-image', [ProductController::class, 'saveProductImage']);
+    Route::post('/change-product-default-image', [ProductController::class, 'updateDefaultImage']);
+    Route::delete('/product-delete-image/{id}', [ProductController::class, 'destroyImage']);
+    Route::get('/orders', [AdminOrderController::class, 'index']);
+    Route::get('/orders/{id}', [AdminOrderController::class, 'details']);
+    Route::put('/orders/{id}', [AdminOrderController::class, 'update']);
+    Route::get('users/{id}', [UserController::class, 'show']);
+    Route::put('users/{id}', [UserController::class, 'update']);
+    Route::delete('users/{id}', [UserController::class, 'destroy']);
+    Route::get('users', [UserController::class, 'index']);
+    Route::get('users/counts', [UserController::class, 'counts']);
+    // Finance summary
+    Route::get('/finance', [FinanceController::class, 'getFinanceSummary']);
+    Route::get('/sales-report', [SaleReportController::class, 'index']);
+    Route::get('/completed-sales', [AdminOrderController::class, 'completedSales']);
+});
 
 Route::post('/send-telegram', function (Request $request) {
     $chat_id = env('TELEGRAM_CHAT_ID');
