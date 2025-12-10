@@ -5,7 +5,7 @@ use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Admin\SaleReportController;
 use App\Http\Controllers\admin\SizeController;
 use App\Http\Controllers\admin\SupplierController;
